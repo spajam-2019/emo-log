@@ -10,11 +10,11 @@ module.exports = class MoyaMoyaMeasurement {
     //リスナーの削除
     RemoveListener(listenerId) { delete this.listenerMap[listenerId] }
 
-    //モヤモヤ度の取得
-    GetMoyaMoyaLevel() {
+    //モヤモヤしてる人数取得
+    GetMoyaMoyaCount() {
         const listeners = Object.values(this.listenerMap);
         const moyamoyaCount = listeners.filter(x => x.IsMoyaMoya).length
-        return moyamoyaCount / listeners.length
+        return moyamoyaCount
     }
 
 }
