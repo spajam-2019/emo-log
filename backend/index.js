@@ -15,6 +15,7 @@ function Connection(io, clientSocket, measurement) {
     console.log("connected!");
     clientSocket.on("pressIn", () => { listener.IsMoyaMoya = true; UpdateMoyaMoyaLevel(io, measurement) })
     clientSocket.on("pressEnd", () => { listener.IsMoyaMoya = false; UpdateMoyaMoyaLevel(io, measurement) })
+    clientSocket.on("disconnect", () => { measurement.RemoveListener(listener.Id); UpdateMoyaMoyaLevel(io, measurement) })
     measurement.AddListener(listener.Id, listener);
     UpdateMoyaMoyaLevel(io, measurement)
 }
