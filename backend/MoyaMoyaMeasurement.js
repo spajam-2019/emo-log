@@ -13,8 +13,7 @@ module.exports = class MoyaMoyaMeasurement {
     //モヤモヤ度の取得
     GetMoyaMoyaLevel() {
         const listeners = Object.values(this.listenerMap);
-        const moyamoyaCount = listeners.map(x => x.IsMoyaMoya ? 1 : 0)
-            .reduce((acc, x) => acc + x);
+        const moyamoyaCount = listeners.filter(x => x.IsMoyaMoya).length
         return moyamoyaCount / listeners.length
     }
 
